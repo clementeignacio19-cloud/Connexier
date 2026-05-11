@@ -16,32 +16,21 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --accent:#0A84FF;
-  --accent-dim:rgba(10,132,255,0.12);
-  --accent-glow:rgba(10,132,255,0.28);
-  --bg:#080C14;
-  --bg2:#0D1220;
-  --surface:rgba(255,255,255,0.045);
-  --surface2:rgba(255,255,255,0.07);
-  --border:rgba(255,255,255,0.08);
-  --border-hi:rgba(10,132,255,0.4);
-  --text:#F5F5F7;
-  --text2:rgba(245,245,247,0.55);
-  --text3:rgba(245,245,247,0.28);
-  --google:#34C759;
-  --outlook:#0A84FF;
-  --danger:#FF453A;
+  --accent:#0A84FF;--accent-dim:rgba(10,132,255,0.12);--accent-glow:rgba(10,132,255,0.28);
+  --bg:#080C14;--bg2:#0D1220;--surface:rgba(255,255,255,0.045);--surface2:rgba(255,255,255,0.07);
+  --border:rgba(255,255,255,0.08);--border-hi:rgba(10,132,255,0.4);
+  --text:#F5F5F7;--text2:rgba(245,245,247,0.55);--text3:rgba(245,245,247,0.28);
+  --google:#34C759;--outlook:#0A84FF;--danger:#FF453A;
   --r:14px;--rsm:10px;
-  --safe-top:env(safe-area-inset-top,0px);
-  --safe-bottom:env(safe-area-inset-bottom,0px);
+  --safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);
 }
 html{background:var(--bg);-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
 body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100dvh;overflow-x:hidden}
 .hidden{display:none!important}
 button{font-family:'DM Sans',sans-serif;cursor:pointer}
 
-/* ── SPLASH ── */
-#splash{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:1000}
+/* SPLASH */
+#splash{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:1000;transition:opacity 0.4s ease}
 .splash-logo{text-align:center}
 .splash-icon{width:80px;height:80px;border-radius:22px;background:var(--accent-dim);border:1px solid var(--border-hi);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;animation:iconPop 0.55s cubic-bezier(0.34,1.56,0.64,1) 0.3s both}
 .splash-icon i{font-size:36px;color:var(--accent)}
@@ -51,75 +40,55 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer}
 .splash-sub{font-size:12px;color:var(--text3);font-family:'DM Mono',monospace;letter-spacing:0.1em;margin-top:4px;animation:fadeUp 0.4s ease 0.8s both}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── ONBOARDING ── */
+/* ONBOARDING */
 #onboarding{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100dvh;padding:2rem 1.5rem calc(2rem + var(--safe-bottom));max-width:420px;margin:0 auto}
-.ob-logo{display:flex;align-items:center;gap:12px;margin-bottom:3rem}
+.ob-logo{display:flex;align-items:center;gap:12px;margin-bottom:2.5rem}
 .ob-icon{width:44px;height:44px;border-radius:13px;background:var(--accent-dim);border:1px solid var(--border-hi);display:flex;align-items:center;justify-content:center}
 .ob-icon i{font-size:22px;color:var(--accent)}
 .ob-name{font-size:22px;font-weight:300;letter-spacing:-0.3px}
 .ob-name span{color:var(--accent)}
 .ob-headline{font-size:28px;font-weight:300;line-height:1.25;letter-spacing:-0.5px;margin-bottom:.75rem;width:100%}
 .ob-headline b{font-weight:500;color:var(--accent)}
-.ob-desc{font-size:15px;color:var(--text2);line-height:1.6;margin-bottom:2.5rem;width:100%}
-.ob-accounts{display:flex;flex-direction:column;gap:10px;width:100%;margin-bottom:2rem}
-.ob-btn{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--border);border-radius:var(--r);background:var(--surface);color:var(--text);font-size:14px;font-weight:400;transition:all 0.2s;position:relative;overflow:hidden;width:100%}
-.ob-btn:hover{border-color:var(--border-hi);background:var(--accent-dim)}
-.ob-btn.connected{border-color:rgba(52,199,89,0.4);background:rgba(52,199,89,0.06)}
-.ob-btn-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.ob-btn-icon.g{background:rgba(52,199,89,0.12);color:var(--google)}
-.ob-btn-icon.o{background:rgba(10,132,255,0.12);color:var(--outlook)}
-.ob-btn-text{flex:1;text-align:left}
-.ob-btn-title{font-size:14px;font-weight:500;color:var(--text)}
-.ob-btn-sub{font-size:11px;color:var(--text3);margin-top:1px}
-.ob-btn-check{font-size:16px;color:var(--google)}
-.ob-divider{display:flex;align-items:center;gap:12px;width:100%;margin-bottom:1.5rem}
-.ob-divider-line{flex:1;height:1px;background:var(--border)}
-.ob-divider-text{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;letter-spacing:0.06em}
-.ob-continue{width:100%;height:52px;background:var(--accent);border:none;border-radius:var(--rsm);color:#fff;font-size:15px;font-weight:500;transition:all 0.2s;opacity:0.4;pointer-events:none}
+.ob-desc{font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:2rem;width:100%}
+.ob-accounts{display:flex;flex-direction:column;gap:10px;width:100%;margin-bottom:1.5rem}
+
+/* Google sign-in button */
+.google-signin-btn{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--border);border-radius:var(--r);background:var(--surface);color:var(--text);font-size:14px;font-weight:400;transition:all 0.2s;width:100%;position:relative}
+.google-signin-btn:hover{border-color:var(--border-hi);background:var(--accent-dim);transform:translateY(-1px)}
+.google-signin-btn:active{transform:scale(0.98)}
+.google-signin-btn.connected{border-color:rgba(52,199,89,0.5);background:rgba(52,199,89,0.07)}
+.gsb-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.gsb-icon.g{background:rgba(52,199,89,0.12);color:var(--google)}
+.gsb-icon.o{background:rgba(10,132,255,0.12);color:var(--outlook)}
+.gsb-text{flex:1;text-align:left}
+.gsb-title{font-size:14px;font-weight:500;color:var(--text)}
+.gsb-sub{font-size:11px;color:var(--text3);margin-top:2px}
+.gsb-arrow{font-size:16px;color:var(--text3)}
+.gsb-check{font-size:18px;color:var(--google)}
+
+.ob-security{background:var(--surface);border:1px solid var(--border);border-radius:var(--rsm);padding:12px 14px;display:flex;gap:10px;align-items:flex-start;margin-bottom:1.5rem;width:100%}
+.ob-security i{color:var(--accent);font-size:16px;flex-shrink:0;margin-top:1px}
+.ob-security p{font-size:12px;color:var(--text3);line-height:1.55}
+
+.ob-continue{width:100%;height:52px;background:var(--accent);border:none;border-radius:var(--rsm);color:#fff;font-size:15px;font-weight:500;transition:all 0.2s;opacity:0.35;pointer-events:none;display:flex;align-items:center;justify-content:center;gap:8px}
 .ob-continue.ready{opacity:1;pointer-events:auto}
-.ob-continue.ready:hover{background:#2196F3}
-.ob-footer{font-size:11px;color:var(--text3);text-align:center;margin-top:1.25rem;line-height:1.6}
+.ob-continue.ready:hover{background:#2196F3;transform:translateY(-1px)}
 
-/* ── AUTH MODAL ── */
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(12px);z-index:200;align-items:center;justify-content:center;padding:1.5rem}
-.modal-bg.open{display:flex}
-.modal{background:#0F1827;border:1px solid var(--border);border-radius:20px;padding:2rem;width:100%;max-width:380px;animation:modalIn 0.3s cubic-bezier(0.34,1.28,0.64,1)}
-@keyframes modalIn{from{transform:scale(0.92);opacity:0}to{transform:scale(1);opacity:1}}
-.modal-head{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem}
-.modal-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
-.modal-icon.g{background:rgba(52,199,89,0.12);color:var(--google)}
-.modal-icon.o{background:rgba(10,132,255,0.12);color:var(--outlook)}
-.modal-title{font-size:17px;font-weight:500}
-.modal-sub{font-size:12px;color:var(--text3);margin-top:1px}
-.modal-close{margin-left:auto;background:none;border:none;color:var(--text3);font-size:22px;line-height:1}
-.modal-close:hover{color:var(--text)}
-.field{margin-bottom:14px}
-.field label{display:block;font-size:11px;color:var(--text3);letter-spacing:0.07em;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:6px}
-.field input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--rsm);padding:11px 14px;font-size:15px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;-webkit-appearance:none}
-.field input:focus{border-color:var(--border-hi)}
-.field input::placeholder{color:var(--text3)}
-.modal-notice{background:var(--accent-dim);border:1px solid var(--border-hi);border-radius:var(--rsm);padding:10px 12px;font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:1.25rem;display:flex;gap:8px;align-items:flex-start}
-.modal-notice i{color:var(--accent);font-size:14px;margin-top:1px;flex-shrink:0}
-.modal-auth-btn{width:100%;height:48px;border:none;border-radius:var(--rsm);font-size:14px;font-weight:500;color:#fff;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px}
-.modal-auth-btn.g{background:#1E7E34}
-.modal-auth-btn.g:hover{background:#28a745}
-.modal-auth-btn.o{background:#0A84FF}
-.modal-auth-btn.o:hover{background:#2196F3}
-.modal-spinner{display:none;width:18px;height:18px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite}
+/* LOADING overlay */
+#loading{position:fixed;inset:0;background:rgba(8,12,20,0.92);backdrop-filter:blur(8px);z-index:500;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.loading-spinner{width:40px;height:40px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-size:14px;color:var(--text2);font-family:'DM Mono',monospace;letter-spacing:0.05em}
 
-/* ── APP SHELL ── */
+/* APP */
 #app{max-width:430px;margin:0 auto;padding-bottom:calc(90px + var(--safe-bottom))}
-
-/* ── TOPBAR ── */
 .topbar{padding:calc(var(--safe-top) + 48px) 20px 0;display:flex;align-items:flex-start;justify-content:space-between}
 .brand-name{font-size:26px;font-weight:300;letter-spacing:-0.5px}
 .brand-name span{color:var(--accent)}
 .brand-sub{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;letter-spacing:0.08em;margin-top:2px}
-.avatar-btn{width:36px;height:36px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--border-hi);color:var(--accent);font-size:12px;font-weight:500;transition:background 0.2s}
-.avatar-btn:hover{background:rgba(10,132,255,0.2)}
+.avatar-btn{width:36px;height:36px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--border-hi);color:var(--accent);font-size:11px;font-weight:500;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.avatar-btn img{width:36px;height:36px;object-fit:cover;border-radius:50%}
 
-/* ── ACCOUNT PILLS ── */
 .accounts-row{display:flex;gap:10px;padding:20px 20px 0}
 .acc{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--rsm);padding:11px 12px;display:flex;align-items:center;gap:9px;position:relative;overflow:hidden}
 .acc::after{content:'';position:absolute;top:0;left:0;right:0;height:2px}
@@ -133,44 +102,57 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer}
 .acc-name{font-size:11px;font-weight:500;color:var(--text)}
 .acc-email{font-size:10px;color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
 
-/* ── STATS ── */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px 20px 0}
 .stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--rsm);padding:12px}
 .stat-n{font-size:24px;font-weight:300;font-family:'DM Mono',monospace;color:var(--text)}
 .stat-l{font-size:10px;color:var(--text3);letter-spacing:0.05em;text-transform:uppercase;margin-top:2px}
 
-/* ── NAV TABS ── */
 .nav-tabs{display:flex;gap:4px;padding:16px 20px 0}
-.nav-tab{flex:1;border:1px solid var(--border);background:transparent;color:var(--text2);font-size:12px;padding:8px 0;border-radius:var(--rsm);transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:6px}
+.nav-tab{flex:1;border:1px solid var(--border);background:transparent;color:var(--text2);font-size:12px;padding:8px 0;border-radius:var(--rsm);transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:5px}
 .nav-tab i{font-size:14px}
 .nav-tab.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:500}
 
-/* ── CALENDAR VIEW ── */
+/* CALENDAR */
 #view-calendar{padding:14px 20px 0}
 .cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.cal-month{font-size:16px;font-weight:500;color:var(--text)}
+.cal-month{font-size:16px;font-weight:500}
 .cal-nav{display:flex;gap:4px}
 .cal-nav button{width:32px;height:32px;border:1px solid var(--border);background:var(--surface);border-radius:8px;color:var(--text2);font-size:16px;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
 .cal-nav button:hover{border-color:var(--border-hi);color:var(--text)}
-.cal-today-btn{border:1px solid var(--border);background:var(--surface);color:var(--text2);font-size:11px;padding:5px 10px;border-radius:8px;transition:all 0.15s;font-family:'DM Mono',monospace}
+.cal-today-btn{border:1px solid var(--border);background:var(--surface);color:var(--text2);font-size:11px;padding:5px 10px;border-radius:8px;font-family:'DM Mono',monospace;transition:all 0.15s}
 .cal-today-btn:hover{border-color:var(--border-hi);color:var(--accent)}
 .cal-grid-head{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:4px}
-.cal-day-name{text-align:center;font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;letter-spacing:0.05em;padding:4px 0;text-transform:uppercase}
+.cal-day-name{text-align:center;font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;letter-spacing:0.04em;padding:4px 0;text-transform:uppercase}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
-.cal-cell{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:6px 2px 3px;border-radius:9px;cursor:pointer;transition:background 0.15s;position:relative;border:1px solid transparent}
+.cal-cell{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:5px 2px 3px;border-radius:9px;cursor:pointer;transition:background 0.15s;position:relative;border:1px solid transparent}
 .cal-cell:hover{background:var(--surface2)}
 .cal-cell.other-month .cal-num{color:var(--text3)}
 .cal-cell.today{border-color:var(--border-hi)}
 .cal-cell.today .cal-num{color:var(--accent);font-weight:500}
 .cal-cell.selected{background:var(--accent-dim);border-color:var(--border-hi)}
-.cal-num{font-size:13px;color:var(--text2);font-family:'DM Mono',monospace;line-height:1}
-.cal-dots{display:flex;gap:2px;margin-top:3px;flex-wrap:wrap;justify-content:center;max-width:24px}
-.cal-dot{width:4px;height:4px;border-radius:50%;flex-shrink:0}
-.cal-dot.g{background:var(--google)}
-.cal-dot.o{background:var(--outlook)}
-.cal-dot.b{background:var(--accent)}
-.cal-events{margin-top:16px}
+.cal-num{font-size:12px;color:var(--text2);font-family:'DM Mono',monospace;line-height:1}
+.cal-dots{display:flex;gap:2px;margin-top:3px;flex-wrap:wrap;justify-content:center;max-width:22px}
+.cal-dot-ev{width:4px;height:4px;border-radius:50%;flex-shrink:0}
+.cal-dot-ev.g{background:var(--google)}
+.cal-dot-ev.o{background:var(--outlook)}
+.cal-dot-ev.b{background:var(--accent)}
+.cal-events-section{margin-top:16px}
 .cal-events-title{font-size:11px;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:8px}
+.sync-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.sync-btn{border:1px solid var(--border-hi);background:var(--accent-dim);color:var(--accent);font-size:11px;padding:5px 12px;border-radius:20px;display:flex;align-items:center;gap:5px;transition:all 0.2s}
+.sync-btn:hover{background:rgba(10,132,255,0.2)}
+.sync-btn i{font-size:13px}
+.sync-btn.syncing i{animation:spin 0.8s linear infinite}
+
+/* LIST */
+#view-list{padding:14px 20px 0}
+.filter-row{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
+.filter-row::-webkit-scrollbar{display:none}
+.chip{border:1px solid var(--border);background:transparent;color:var(--text2);font-size:11px;padding:5px 12px;border-radius:20px;white-space:nowrap;transition:all 0.2s;letter-spacing:0.03em}
+.chip.on{border-color:var(--border-hi);background:var(--accent-dim);color:var(--accent)}
+.month-lbl{font-size:11px;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:10px}
+
+/* EVENTS */
 .ev-list{display:flex;flex-direction:column;gap:7px}
 .ev{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;display:flex;gap:10px;cursor:pointer;transition:all 0.15s;animation:fadeUp 0.3s ease both}
 .ev:hover{background:var(--surface2);border-color:rgba(255,255,255,0.12)}
@@ -187,20 +169,12 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer}
 .empty i{font-size:32px;display:block;margin-bottom:10px;opacity:0.25}
 .empty p{font-size:13px}
 
-/* ── LIST VIEW ── */
-#view-list{padding:14px 20px 0}
-.filter-row{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
-.filter-row::-webkit-scrollbar{display:none}
-.chip{border:1px solid var(--border);background:transparent;color:var(--text2);font-size:11px;padding:5px 12px;border-radius:20px;white-space:nowrap;transition:all 0.2s;letter-spacing:0.03em}
-.chip.on{border-color:var(--border-hi);background:var(--accent-dim);color:var(--accent)}
-.month-lbl{font-size:11px;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:10px}
-
-/* ── FAB ── */
+/* FAB */
 .fab{position:fixed;bottom:calc(24px + var(--safe-bottom));left:50%;transform:translateX(-50%);background:var(--accent);border:none;border-radius:50px;padding:0 24px;height:50px;display:flex;align-items:center;gap:9px;color:#fff;font-size:14px;font-weight:500;letter-spacing:0.02em;box-shadow:0 8px 28px rgba(10,132,255,0.45);transition:all 0.2s;z-index:40}
-.fab:hover{background:#2196F3;box-shadow:0 12px 36px rgba(10,132,255,0.55);transform:translateX(-50%) translateY(-2px)}
+.fab:hover{background:#2196F3;transform:translateX(-50%) translateY(-2px)}
 .fab:active{transform:translateX(-50%) scale(0.96)}
 
-/* ── SHEET ── */
+/* SHEET */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.72);backdrop-filter:blur(10px);z-index:50;align-items:flex-end;justify-content:center}
 .overlay.open{display:flex}
 .sheet{background:#0F1520;border:1px solid var(--border);border-radius:24px 24px 0 0;padding:0 20px calc(28px + var(--safe-bottom));width:100%;max-width:430px;animation:slideUp 0.32s cubic-bezier(0.34,1.28,0.64,1);max-height:90dvh;overflow-y:auto}
@@ -210,6 +184,12 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer}
 .sheet-title{font-size:17px;font-weight:500}
 .close-x{background:none;border:none;color:var(--text3);font-size:22px;line-height:1;transition:color 0.2s}
 .close-x:hover{color:var(--text)}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:11px;color:var(--text3);letter-spacing:0.07em;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:6px}
+.field input,.field select{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--rsm);padding:11px 14px;font-size:15px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;-webkit-appearance:none}
+.field input:focus,.field select:focus{border-color:var(--border-hi)}
+.field input::placeholder{color:var(--text3)}
+input[type="date"],input[type="time"]{color-scheme:dark}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .field-lbl{font-size:11px;color:var(--text3);letter-spacing:0.07em;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:8px}
 .cal-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
@@ -223,21 +203,22 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer}
 .save-btn{width:100%;height:50px;background:var(--accent);border:none;border-radius:var(--rsm);color:#fff;font-size:15px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.2s}
 .save-btn:hover{background:#2196F3}
 
-/* ── SETTINGS SHEET ── */
+/* SETTINGS */
 .settings-row{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border)}
 .settings-row:last-of-type{border-bottom:none}
-.si{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.si{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:16px;justify-content:center;font-size:17px;flex-shrink:0}
 .si.g{background:rgba(52,199,89,0.1);color:var(--google)}
 .si.o{background:rgba(10,132,255,0.1);color:var(--outlook)}
 .si.d{background:rgba(255,69,58,0.1);color:var(--danger)}
 .s-info{flex:1;min-width:0}
 .s-name{font-size:14px;color:var(--text)}
-.s-email{font-size:11px;color:var(--text3);margin-top:1px}
-.badge-ok{font-size:10px;padding:3px 8px;border-radius:6px;background:rgba(52,199,89,0.1);color:var(--google);font-weight:500}
+.s-email{font-size:11px;color:var(--text3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.badge-ok{font-size:10px;padding:3px 8px;border-radius:6px;background:rgba(52,199,89,0.1);color:var(--google);font-weight:500;flex-shrink:0}
 .s-divider{height:1px;background:var(--border);margin:6px 0}
 .s-footer{text-align:center;font-size:11px;color:var(--text3);margin-top:18px;line-height:1.6}
+.s-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0}
 
-/* ── TOAST ── */
+/* TOAST */
 .toast{display:none;position:fixed;top:calc(var(--safe-top) + 14px);left:50%;transform:translateX(-50%);background:rgba(15,21,32,0.96);border:1px solid var(--border-hi);backdrop-filter:blur(12px);color:var(--text);padding:9px 18px;border-radius:50px;font-size:13px;z-index:300;align-items:center;gap:7px;white-space:nowrap;pointer-events:none}
 .toast.show{display:flex;animation:toastIn 0.3s ease}
 .toast i{color:var(--accent);font-size:14px}
@@ -251,8 +232,14 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer}
   <div class="splash-logo">
     <div class="splash-icon"><i class="ti ti-calendar-event"></i></div>
     <div class="splash-name">Conn<span>ex</span>ier</div>
-    <div class="splash-sub">calendar sync · v2.0</div>
+    <div class="splash-sub">calendar sync · v3.0</div>
   </div>
+</div>
+
+<!-- LOADING -->
+<div id="loading" class="hidden">
+  <div class="loading-spinner"></div>
+  <div class="loading-text" id="loading-text">Conectando con Google...</div>
 </div>
 
 <!-- ONBOARDING -->
@@ -262,104 +249,60 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer}
     <div class="ob-name">Conn<span>ex</span>ier</div>
   </div>
   <div class="ob-headline">Todos tus calendarios,<br/><b>en un solo lugar</b></div>
-  <div class="ob-desc">Conecta tus cuentas de Google y Outlook para crear y sincronizar eventos desde Connexier.</div>
+  <div class="ob-desc">Inicia sesión con tu cuenta de Google para sincronizar y gestionar tus eventos desde Connexier.</div>
 
   <div class="ob-accounts">
-    <button class="ob-btn" id="ob-google-btn" onclick="openAuthModal('google')">
-      <div class="ob-btn-icon g"><i class="ti ti-brand-google"></i></div>
-      <div class="ob-btn-text">
-        <div class="ob-btn-title">Conectar Google Calendar</div>
-        <div class="ob-btn-sub" id="ob-google-sub">Inicia sesión con tu cuenta Google</div>
+    <button class="google-signin-btn" id="google-btn" onclick="signInGoogle()">
+      <div class="gsb-icon g"><i class="ti ti-brand-google"></i></div>
+      <div class="gsb-text">
+        <div class="gsb-title">Iniciar sesión con Google</div>
+        <div class="gsb-sub" id="google-btn-sub">Conecta tu Google Calendar</div>
       </div>
-      <i class="ti ti-check ob-btn-check hidden" id="ob-google-check"></i>
-    </button>
-    <button class="ob-btn" id="ob-outlook-btn" onclick="openAuthModal('outlook')">
-      <div class="ob-btn-icon o"><i class="ti ti-brand-windows"></i></div>
-      <div class="ob-btn-text">
-        <div class="ob-btn-title">Conectar Outlook</div>
-        <div class="ob-btn-sub" id="ob-outlook-sub">Inicia sesión con tu cuenta Microsoft</div>
-      </div>
-      <i class="ti ti-check ob-btn-check hidden" id="ob-outlook-check"></i>
+      <i class="ti ti-arrow-right gsb-arrow" id="google-btn-arrow"></i>
     </button>
   </div>
 
-  <div class="ob-divider">
-    <div class="ob-divider-line"></div>
-    <div class="ob-divider-text">seguridad</div>
-    <div class="ob-divider-line"></div>
+  <div class="ob-security">
+    <i class="ti ti-shield-lock"></i>
+    <p>Connexier usa OAuth 2.0 de Google. Nunca almacenamos tu contraseña. Solo accedemos a tu calendario con tu permiso explícito.</p>
   </div>
 
-  <button class="ob-continue" id="ob-continue" onclick="finishOnboarding()">
-    <i class="ti ti-arrow-right" style="vertical-align:-2px;margin-right:6px"></i>
+  <button class="ob-continue hidden" id="ob-continue" onclick="finishOnboarding()">
+    <i class="ti ti-arrow-right"></i>
     Entrar a Connexier
   </button>
-  <div class="ob-footer">
-    Tus credenciales se almacenan solo en este dispositivo.<br/>
-    Connexier nunca accede a tus correos.
-  </div>
 </div>
 
-<!-- AUTH MODAL -->
-<div class="modal-bg" id="auth-modal" onclick="bgCloseModal(event)">
-  <div class="modal">
-    <div class="modal-head">
-      <div class="modal-icon" id="modal-icon"><i class="ti ti-brand-google"></i></div>
-      <div>
-        <div class="modal-title" id="modal-title">Conectar Google</div>
-        <div class="modal-sub" id="modal-sub">Ingresa tus credenciales</div>
-      </div>
-      <button class="modal-close" onclick="closeAuthModal()"><i class="ti ti-x"></i></button>
-    </div>
-    <div class="modal-notice">
-      <i class="ti ti-shield-check"></i>
-      <span>Tus datos se guardan localmente en tu dispositivo y nunca se comparten con terceros.</span>
-    </div>
-    <div class="field">
-      <label>Correo electrónico</label>
-      <input id="auth-email" type="email" placeholder="correo@ejemplo.com" autocomplete="email"/>
-    </div>
-    <div class="field" style="margin-bottom:1.25rem">
-      <label>Contraseña</label>
-      <input id="auth-pass" type="password" placeholder="••••••••" autocomplete="current-password"/>
-    </div>
-    <button class="modal-auth-btn g" id="modal-auth-btn" onclick="submitAuth()">
-      <div class="modal-spinner" id="modal-spinner"></div>
-      <i class="ti ti-login" id="modal-btn-icon"></i>
-      <span id="modal-btn-text">Conectar cuenta</span>
-    </button>
-  </div>
-</div>
-
-<!-- MAIN APP -->
+<!-- APP -->
 <div id="app" class="hidden">
   <header class="topbar">
     <div class="brand">
       <div class="brand-name">Conn<span>ex</span>ier</div>
-      <div class="brand-sub">calendar sync · v2.0</div>
+      <div class="brand-sub">calendar sync · v3.0</div>
     </div>
-    <button class="avatar-btn" onclick="openSettings()">CL</button>
+    <button class="avatar-btn" onclick="openSettings()" id="avatar-btn">CL</button>
   </header>
 
   <section class="accounts-row">
     <div class="acc google">
       <div class="acc-dot g"></div>
       <div class="acc-info">
-        <div class="acc-name">Google</div>
-        <div class="acc-email" id="acc-google-email">—</div>
+        <div class="acc-name">Google Calendar</div>
+        <div class="acc-email" id="acc-google-email">Cargando...</div>
       </div>
     </div>
-    <div class="acc outlook">
-      <div class="acc-dot o"></div>
+    <div class="acc outlook" style="opacity:0.4">
+      <div class="acc-dot o" style="animation:none;opacity:0.4"></div>
       <div class="acc-info">
         <div class="acc-name">Outlook</div>
-        <div class="acc-email" id="acc-outlook-email">—</div>
+        <div class="acc-email">Próximamente</div>
       </div>
     </div>
   </section>
 
   <section class="stats">
     <div class="stat"><div class="stat-n" id="s-total">0</div><div class="stat-l">Eventos</div></div>
-    <div class="stat"><div class="stat-n" id="s-sync">0</div><div class="stat-l">Sync</div></div>
+    <div class="stat"><div class="stat-n" id="s-sync">0</div><div class="stat-l">Este mes</div></div>
     <div class="stat"><div class="stat-n" id="s-today">0</div><div class="stat-l">Hoy</div></div>
   </section>
 
@@ -381,17 +324,19 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer}
       </div>
     </div>
     <div class="cal-grid-head">
-      <div class="cal-day-name">Lun</div>
-      <div class="cal-day-name">Mar</div>
-      <div class="cal-day-name">Mié</div>
-      <div class="cal-day-name">Jue</div>
-      <div class="cal-day-name">Vie</div>
-      <div class="cal-day-name">Sáb</div>
+      <div class="cal-day-name">Lun</div><div class="cal-day-name">Mar</div>
+      <div class="cal-day-name">Mié</div><div class="cal-day-name">Jue</div>
+      <div class="cal-day-name">Vie</div><div class="cal-day-name">Sáb</div>
       <div class="cal-day-name">Dom</div>
     </div>
     <div class="cal-grid" id="cal-grid"></div>
-    <div class="cal-events">
-      <div class="cal-events-title" id="cal-events-title">Eventos del día</div>
+    <div class="cal-events-section">
+      <div class="sync-bar">
+        <div class="cal-events-title" id="cal-events-title">Eventos del día</div>
+        <button class="sync-btn" onclick="syncCalendar()" id="sync-btn">
+          <i class="ti ti-refresh"></i>Sincronizar
+        </button>
+      </div>
       <div class="ev-list" id="cal-ev-list"></div>
     </div>
   </div>
@@ -401,8 +346,8 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer}
     <div class="filter-row">
       <button class="chip on" onclick="setFilter('all',this)">Todos</button>
       <button class="chip" onclick="setFilter('today',this)">Hoy</button>
-      <button class="chip" onclick="setFilter('synced',this)">Sincronizados</button>
       <button class="chip" onclick="setFilter('week',this)">Esta semana</button>
+      <button class="chip" onclick="setFilter('month',this)">Este mes</button>
     </div>
     <div class="month-lbl" id="list-month-lbl"></div>
     <div class="ev-list" id="list-ev-list"></div>
@@ -415,7 +360,7 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer}
 </button>
 
 <!-- NEW EVENT SHEET -->
-<div class="overlay" id="overlay" onclick="bgCloseSheet(event)">
+<div class="overlay" id="overlay" onclick="bgClose(event,'overlay')">
   <div class="sheet">
     <div class="sheet-handle"></div>
     <div class="sheet-hdr">
@@ -425,9 +370,22 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer}
     <div class="field"><label>Título</label><input id="f-title" type="text" placeholder="Nombre del evento" autocomplete="off"/></div>
     <div class="row2">
       <div class="field"><label>Fecha</label><input id="f-date" type="date"/></div>
-      <div class="field"><label>Hora</label><input id="f-time" type="time"/></div>
+      <div class="field"><label>Hora inicio</label><input id="f-time" type="time"/></div>
     </div>
-    <div class="field" style="margin-bottom:14px"><label>Descripción</label><input id="f-desc" type="text" placeholder="Opcional..." autocomplete="off"/></div>
+    <div class="row2">
+      <div class="field"><label>Hora fin</label><input id="f-time-end" type="time"/></div>
+      <div class="field"><label>Color</label>
+        <select id="f-color">
+          <option value="1">Azul (Peacock)</option>
+          <option value="2">Verde (Sage)</option>
+          <option value="3">Morado (Grape)</option>
+          <option value="4">Rojo (Flamingo)</option>
+          <option value="5">Amarillo (Banana)</option>
+          <option value="6">Naranja (Tangerine)</option>
+        </select>
+      </div>
+    </div>
+    <div class="field"><label>Descripción</label><input id="f-desc" type="text" placeholder="Opcional..." autocomplete="off"/></div>
     <div class="field-lbl">Guardar en</div>
     <div class="cal-opts">
       <label class="cal-opt sel" id="opt-g">
@@ -435,18 +393,13 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer}
         <span class="cal-opt-label"><span class="caldot" style="background:var(--google)"></span>Google Calendar</span>
         <i class="ti ti-check cal-chk"></i>
       </label>
-      <label class="cal-opt sel" id="opt-o">
-        <input type="checkbox" id="chk-o" checked onchange="togOpt('opt-o',this)"/>
-        <span class="cal-opt-label"><span class="caldot" style="background:var(--outlook)"></span>Outlook Calendar</span>
-        <i class="ti ti-check cal-chk"></i>
-      </label>
     </div>
-    <button class="save-btn" onclick="saveEv()"><i class="ti ti-calendar-check"></i>Guardar evento</button>
+    <button class="save-btn" onclick="saveEv()"><i class="ti ti-calendar-check"></i>Guardar en Google Calendar</button>
   </div>
 </div>
 
 <!-- SETTINGS SHEET -->
-<div class="overlay" id="settings-overlay" onclick="bgCloseSettings(event)">
+<div class="overlay" id="settings-overlay" onclick="bgClose(event,'settings-overlay')">
   <div class="sheet">
     <div class="sheet-handle"></div>
     <div class="sheet-hdr">
@@ -454,274 +407,301 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer}
       <button class="close-x" onclick="closeSettings()"><i class="ti ti-x"></i></button>
     </div>
     <div class="settings-row">
-      <div class="si g"><i class="ti ti-brand-google"></i></div>
-      <div class="s-info"><div class="s-name">Google Calendar</div><div class="s-email" id="s-google-email">—</div></div>
-      <span class="badge-ok">Conectado</span>
-    </div>
-    <div class="settings-row">
-      <div class="si o"><i class="ti ti-brand-windows"></i></div>
-      <div class="s-info"><div class="s-name">Outlook</div><div class="s-email" id="s-outlook-email">—</div></div>
+      <img class="s-avatar" id="s-avatar" src="" alt="" onerror="this.style.display='none'"/>
+      <div class="s-info">
+        <div class="s-name" id="s-name">Google Calendar</div>
+        <div class="s-email" id="s-email">—</div>
+      </div>
       <span class="badge-ok">Conectado</span>
     </div>
     <div class="s-divider"></div>
-    <div class="settings-row" style="cursor:pointer" onclick="clearEvents()">
-      <div class="si d"><i class="ti ti-trash"></i></div>
-      <div class="s-info"><div class="s-name" style="color:var(--danger)">Borrar todos los eventos</div><div class="s-email">Limpia la lista local</div></div>
+    <div class="settings-row" style="cursor:pointer" onclick="syncCalendar();closeSettings()">
+      <div class="si g"><i class="ti ti-refresh"></i></div>
+      <div class="s-info"><div class="s-name">Sincronizar calendario</div><div class="s-email">Traer eventos desde Google</div></div>
     </div>
     <div class="settings-row" style="cursor:pointer" onclick="logout()">
       <div class="si d"><i class="ti ti-logout"></i></div>
-      <div class="s-info"><div class="s-name" style="color:var(--danger)">Cerrar sesión</div><div class="s-email">Vuelve a la pantalla de conexión</div></div>
+      <div class="s-info"><div class="s-name" style="color:var(--danger)">Cerrar sesión</div><div class="s-email">Desconecta tu cuenta Google</div></div>
     </div>
-    <p class="s-footer">Connexier v2.0 · Hecho con ♥ por Clemente<br/>Tus datos son privados y locales</p>
+    <p class="s-footer">Connexier v3.0 · Hecho con ♥ por Clemente<br/>Powered by Google Calendar API</p>
   </div>
 </div>
 
 <!-- TOAST -->
 <div class="toast" id="toast"><i class="ti ti-check"></i><span id="toast-txt"></span></div>
 
+<!-- Google Identity Services -->
+<script src="https://accounts.google.com/gsi/client" async></script>
+
 <script>
+// ── CONFIG ──
+const CLIENT_ID = '373333334788-k99k4hklm87pbf1nljb4cjt9q5l3l593.apps.googleusercontent.com';
+const SCOPES    = 'https://www.googleapis.com/auth/calendar openid profile email';
+const DISCOVERY = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
+
 // ── State ──
 const pad = n => String(n).padStart(2,'0');
 const now = new Date();
 const MONTHS = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-const DAYS_SHORT = ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
 
-let accounts = loadAccounts();
-let events = loadEvents();
-let nextId = events.length ? Math.max(...events.map(e=>e.id))+1 : 1;
-let curFilter = 'all';
-let calYear = now.getFullYear();
-let calMonth = now.getMonth();
+let tokenClient, accessToken = null, userInfo = null;
+let events = [];
+let calYear = now.getFullYear(), calMonth = now.getMonth();
 let selectedDate = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
-let authTarget = null;
-let curView = 'calendar';
+let curFilter = 'all', curView = 'calendar';
 
 function todayStr(){ return `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`; }
 
-// ── Persistence ──
-function loadAccounts(){ try{ return JSON.parse(localStorage.getItem('cx_accounts'))||{google:null,outlook:null}; }catch{ return {google:null,outlook:null}; } }
-function saveAccounts(){ try{ localStorage.setItem('cx_accounts',JSON.stringify(accounts)); }catch{} }
-function loadEvents(){ try{ const r=localStorage.getItem('cx_events'); return r?JSON.parse(r):defaultEvents(); }catch{ return defaultEvents(); } }
-function saveEvents(){ try{ localStorage.setItem('cx_events',JSON.stringify(events)); }catch{} }
-function defaultEvents(){
-  const t = todayStr();
-  return [
-    {id:1,title:'Reunión de equipo',date:t,time:'09:00',desc:'Stand-up semanal',src:'both'},
-    {id:2,title:'Llamada con cliente',date:t,time:'11:30',desc:'Demo del producto',src:'google'},
-  ];
-}
-
 // ── Boot ──
 function boot(){
+  const saved = localStorage.getItem('cx_token');
   setTimeout(()=>{
-    document.getElementById('splash').style.display='none';
-    if(!accounts.google && !accounts.outlook){
-      document.getElementById('onboarding').classList.remove('hidden');
+    document.getElementById('splash').style.opacity='0';
+    setTimeout(()=>{ document.getElementById('splash').style.display='none'; }, 400);
+    if(saved){
+      accessToken = saved;
+      showLoading('Verificando sesión...');
+      fetchUserInfo().then(()=>{
+        loadEvents();
+      }).catch(()=>{
+        localStorage.removeItem('cx_token');
+        showOnboarding();
+      });
     } else {
-      launchApp();
+      showOnboarding();
     }
   }, 1800);
 }
 
-// ── Onboarding ──
-let authTarget2 = null;
-function openAuthModal(provider){
-  authTarget2 = provider;
-  const isGoogle = provider==='google';
-  const icon = document.getElementById('modal-icon');
-  icon.className = `modal-icon ${isGoogle?'g':'o'}`;
-  icon.innerHTML = `<i class="ti ti-brand-${isGoogle?'google':'windows'}"></i>`;
-  document.getElementById('modal-title').textContent = isGoogle?'Conectar Google':'Conectar Outlook';
-  document.getElementById('modal-sub').textContent = isGoogle?'Cuenta de Google Calendar':'Cuenta de Microsoft Outlook';
-  const btn = document.getElementById('modal-auth-btn');
-  btn.className = `modal-auth-btn ${isGoogle?'g':'o'}`;
-  document.getElementById('auth-email').value='';
-  document.getElementById('auth-pass').value='';
-  document.getElementById('auth-modal').classList.add('open');
-  setTimeout(()=>document.getElementById('auth-email').focus(),300);
+function showOnboarding(){
+  document.getElementById('onboarding').classList.remove('hidden');
 }
-function closeAuthModal(){ document.getElementById('auth-modal').classList.remove('open'); }
-function bgCloseModal(e){ if(e.target===document.getElementById('auth-modal')) closeAuthModal(); }
+function showLoading(msg='Cargando...'){
+  document.getElementById('loading-text').textContent = msg;
+  document.getElementById('loading').classList.remove('hidden');
+}
+function hideLoading(){
+  document.getElementById('loading').classList.add('hidden');
+}
 
-function submitAuth(){
-  const email = document.getElementById('auth-email').value.trim();
-  const pass  = document.getElementById('auth-pass').value;
-  if(!email||!pass){ toast('Completa los campos'); return; }
-  if(!email.includes('@')){ toast('Correo inválido'); return; }
-  // Simulate auth
-  const spinner = document.getElementById('modal-spinner');
-  const btnIcon = document.getElementById('modal-btn-icon');
-  const btnTxt  = document.getElementById('modal-btn-text');
-  spinner.style.display='block'; btnIcon.style.display='none'; btnTxt.textContent='Conectando...';
-  setTimeout(()=>{
-    accounts[authTarget2] = email;
-    saveAccounts();
-    spinner.style.display='none'; btnIcon.style.display=''; btnTxt.textContent='Conectar cuenta';
-    closeAuthModal();
-    // Update onboarding UI
-    const btn = document.getElementById(`ob-${authTarget2}-btn`);
-    btn.classList.add('connected');
-    document.getElementById(`ob-${authTarget2}-sub`).textContent = email;
-    document.getElementById(`ob-${authTarget2}-check`).classList.remove('hidden');
-    // Enable continue if at least one connected
-    if(accounts.google||accounts.outlook){
-      document.getElementById('ob-continue').classList.add('ready');
+// ── Google OAuth ──
+function signInGoogle(){
+  showLoading('Abriendo Google...');
+  tokenClient = google.accounts.oauth2.initTokenClient({
+    client_id: CLIENT_ID,
+    scope: SCOPES,
+    callback: async (resp) => {
+      if(resp.error){ hideLoading(); toast('Error al conectar con Google'); return; }
+      accessToken = resp.access_token;
+      localStorage.setItem('cx_token', accessToken);
+      showLoading('Obteniendo tu perfil...');
+      await fetchUserInfo();
+      await loadEvents();
     }
-    toast(`${authTarget2==='google'?'Google':'Outlook'} conectado`);
-  }, 1400);
+  });
+  tokenClient.requestAccessToken({prompt:'consent'});
 }
 
-function finishOnboarding(){
-  document.getElementById('onboarding').classList.add('hidden');
-  launchApp();
+async function fetchUserInfo(){
+  const r = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+    headers:{ Authorization: `Bearer ${accessToken}` }
+  });
+  if(!r.ok) throw new Error('Token inválido');
+  userInfo = await r.json();
+  updateUserUI();
+}
+
+function updateUserUI(){
+  if(!userInfo) return;
+  const email = userInfo.email || '—';
+  const name  = userInfo.name  || email;
+  const pic   = userInfo.picture || '';
+  document.getElementById('acc-google-email').textContent = email;
+  document.getElementById('s-email').textContent  = email;
+  document.getElementById('s-name').textContent   = name;
+  if(pic){ document.getElementById('s-avatar').src = pic; document.getElementById('s-avatar').style.display='block'; }
+  // avatar btn
+  const ab = document.getElementById('avatar-btn');
+  if(pic){ ab.innerHTML=`<img src="${pic}" alt="${name}"/>`; }
+  else { ab.textContent = name.substring(0,2).toUpperCase(); }
+  // update google btn
+  document.getElementById('google-btn').classList.add('connected');
+  document.getElementById('google-btn-sub').textContent = email;
+  document.getElementById('google-btn-arrow').className = 'ti ti-check gsb-check';
+  document.getElementById('ob-continue').classList.remove('hidden');
+}
+
+// ── Load events from Google Calendar API ──
+async function loadEvents(){
+  showLoading('Cargando tus eventos...');
+  try {
+    const start = new Date(calYear, calMonth, 1).toISOString();
+    const end   = new Date(calYear, calMonth+2, 0).toISOString();
+    const url = `https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=${start}&timeMax=${end}&singleEvents=true&orderBy=startTime&maxResults=100`;
+    const r = await fetch(url, { headers:{ Authorization:`Bearer ${accessToken}` } });
+    if(!r.ok) throw new Error('Calendar error');
+    const data = await r.json();
+    events = (data.items||[]).map(ev=>({
+      id:      ev.id,
+      title:   ev.summary || '(Sin título)',
+      date:    (ev.start.dateTime||ev.start.date||'').substring(0,10),
+      time:    ev.start.dateTime ? ev.start.dateTime.substring(11,16) : '00:00',
+      timeEnd: ev.end?.dateTime   ? ev.end.dateTime.substring(11,16)   : '',
+      desc:    ev.description||'',
+      src:     'google',
+      colorId: ev.colorId||'1',
+    }));
+    hideLoading();
+    launchApp();
+    renderAll();
+    toast(`${events.length} eventos cargados`);
+  } catch(e){
+    hideLoading();
+    if(e.message==='Calendar error'){ localStorage.removeItem('cx_token'); showOnboarding(); return; }
+    toast('Error al cargar eventos');
+    launchApp();
+  }
+}
+
+async function syncCalendar(){
+  const btn = document.getElementById('sync-btn');
+  btn.classList.add('syncing');
+  await loadEvents();
+  btn.classList.remove('syncing');
 }
 
 function launchApp(){
+  document.getElementById('onboarding').classList.add('hidden');
   document.getElementById('app').classList.remove('hidden');
   document.getElementById('fab').classList.remove('hidden');
-  updateAccountEmails();
-  renderAll();
+  updateUserUI();
 }
 
-function updateAccountEmails(){
-  const ge = accounts.google||'No conectado';
-  const oe = accounts.outlook||'No conectado';
-  document.getElementById('acc-google-email').textContent = ge;
-  document.getElementById('acc-outlook-email').textContent = oe;
-  document.getElementById('s-google-email').textContent = ge;
-  document.getElementById('s-outlook-email').textContent = oe;
+function finishOnboarding(){ launchApp(); renderAll(); }
+
+// ── Create event on Google Calendar ──
+async function saveEv(){
+  const title = document.getElementById('f-title').value.trim();
+  if(!title){ document.getElementById('f-title').focus(); return; }
+  const date    = document.getElementById('f-date').value  || todayStr();
+  const time    = document.getElementById('f-time').value  || '09:00';
+  const timeEnd = document.getElementById('f-time-end').value || addHour(time);
+  const desc    = document.getElementById('f-desc').value.trim();
+  const colorId = document.getElementById('f-color').value;
+
+  const body = {
+    summary:     title,
+    description: desc,
+    colorId,
+    start:{ dateTime:`${date}T${time}:00`, timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone },
+    end:{   dateTime:`${date}T${timeEnd}:00`, timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone },
+  };
+
+  try{
+    const r = await fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events',{
+      method:'POST',
+      headers:{ Authorization:`Bearer ${accessToken}`, 'Content-Type':'application/json' },
+      body: JSON.stringify(body)
+    });
+    if(!r.ok) throw new Error();
+    closeSheet();
+    toast('Evento creado en Google Calendar ✓');
+    await loadEvents();
+  } catch{
+    toast('Error al crear evento');
+  }
 }
 
-// ── Calendar ──
+function addHour(t){ const[h,m]=t.split(':'); return `${pad((parseInt(h)+1)%24)}:${m}`; }
+
+// ── Calendar render ──
 function renderCalendar(){
-  const label = document.getElementById('cal-month-label');
-  label.textContent = `${MONTHS[calMonth]} ${calYear}`;
-
+  document.getElementById('cal-month-label').textContent = `${MONTHS[calMonth]} ${calYear}`;
   const grid = document.getElementById('cal-grid');
   grid.innerHTML='';
-
   const firstDay = new Date(calYear, calMonth, 1);
-  // Monday-based: 0=Mon..6=Sun
-  let startDow = firstDay.getDay(); // 0=Sun
-  startDow = startDow===0 ? 6 : startDow-1;
-
+  let startDow = firstDay.getDay(); startDow = startDow===0?6:startDow-1;
   const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
   const daysInPrev  = new Date(calYear, calMonth, 0).getDate();
-  const cells = [];
-
+  const cells=[];
   for(let i=startDow-1;i>=0;i--) cells.push({day:daysInPrev-i,month:calMonth-1,year:calYear,other:true});
   for(let d=1;d<=daysInMonth;d++) cells.push({day:d,month:calMonth,year:calYear,other:false});
-  const remaining = 42-cells.length;
-  for(let d=1;d<=remaining;d++) cells.push({day:d,month:calMonth+1,year:calYear,other:true});
-
+  const rem=42-cells.length;
+  for(let d=1;d<=rem;d++) cells.push({day:d,month:calMonth+1,year:calYear,other:true});
   cells.forEach(c=>{
-    const dateStr = `${c.year}-${pad(c.month+1)}-${pad(c.day)}`;
-    const isToday = dateStr===todayStr();
-    const isSelected = dateStr===selectedDate;
-    const dayEvents = events.filter(e=>e.date===dateStr);
-
-    const cell = document.createElement('div');
-    cell.className = `cal-cell${c.other?' other-month':''}${isToday?' today':''}${isSelected?' selected':''}`;
-    cell.onclick = ()=>selectDate(dateStr);
-
-    const num = document.createElement('div');
-    num.className='cal-num';
-    num.textContent=c.day;
+    const dateStr=`${c.year}-${pad(c.month+1)}-${pad(c.day)}`;
+    const isToday=dateStr===todayStr(), isSel=dateStr===selectedDate;
+    const dayEvs=events.filter(e=>e.date===dateStr);
+    const cell=document.createElement('div');
+    cell.className=`cal-cell${c.other?' other-month':''}${isToday?' today':''}${isSel?' selected':''}`;
+    cell.onclick=()=>selectDate(dateStr);
+    const num=document.createElement('div'); num.className='cal-num'; num.textContent=c.day;
     cell.appendChild(num);
-
-    if(dayEvents.length){
-      const dots = document.createElement('div');
-      dots.className='cal-dots';
-      dayEvents.slice(0,3).forEach(ev=>{
-        const d=document.createElement('div');
-        d.className=`cal-dot ${ev.src==='google'?'g':ev.src==='outlook'?'o':'b'}`;
-        dots.appendChild(d);
-      });
+    if(dayEvs.length){
+      const dots=document.createElement('div'); dots.className='cal-dots';
+      dayEvs.slice(0,3).forEach(()=>{ const d=document.createElement('div'); d.className='cal-dot-ev g'; dots.appendChild(d); });
       cell.appendChild(dots);
     }
     grid.appendChild(cell);
   });
-
   renderCalEvents();
 }
 
-function selectDate(dateStr){
-  selectedDate=dateStr;
-  renderCalendar();
-}
-
+function selectDate(d){ selectedDate=d; renderCalendar(); }
 function renderCalEvents(){
-  const dayEvs = events.filter(e=>e.date===selectedDate);
-  const [y,m,d] = selectedDate.split('-');
-  const months=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-  document.getElementById('cal-events-title').textContent =
-    `${parseInt(d)} ${months[parseInt(m)-1]} · ${dayEvs.length} evento${dayEvs.length!==1?'s':''}`;
+  const dayEvs=events.filter(e=>e.date===selectedDate);
+  const [,m,d]=selectedDate.split('-');
+  const ms=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  document.getElementById('cal-events-title').textContent=`${parseInt(d)} ${ms[parseInt(m)-1]} · ${dayEvs.length} evento${dayEvs.length!==1?'s':''}`;
   const el=document.getElementById('cal-ev-list');
-  if(!dayEvs.length){
-    el.innerHTML='<div class="empty"><i class="ti ti-calendar-off"></i><p>Sin eventos este día</p></div>';
-    return;
-  }
+  if(!dayEvs.length){ el.innerHTML='<div class="empty"><i class="ti ti-calendar-off"></i><p>Sin eventos este día</p></div>'; return; }
   el.innerHTML=dayEvs.map((ev,i)=>`
     <div class="ev" style="animation-delay:${i*40}ms">
-      <div class="ev-stripe" style="background:${stripeColor(ev.src)}"></div>
+      <div class="ev-stripe" style="background:var(--google)"></div>
       <div class="ev-body">
         <div class="ev-title">${esc(ev.title)}</div>
-        <div class="ev-time">${ev.time}h${ev.desc?' · '+esc(ev.desc):''}</div>
-        <div class="ev-tags">${tagHtml(ev.src)}</div>
+        <div class="ev-time">${ev.time}${ev.timeEnd?' – '+ev.timeEnd:''}h</div>
+      </div>
+      <div style="width:28px;height:28px;border-radius:7px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <i class="ti ti-brand-google" style="font-size:13px;color:var(--google)"></i>
       </div>
     </div>`).join('');
 }
 
-function changeMonth(dir){
-  calMonth+=dir;
-  if(calMonth>11){calMonth=0;calYear++;}
-  if(calMonth<0){calMonth=11;calYear--;}
-  renderCalendar();
-}
-function goToday(){
-  calYear=now.getFullYear(); calMonth=now.getMonth();
-  selectedDate=todayStr();
-  renderCalendar();
-}
+function changeMonth(d){ calMonth+=d; if(calMonth>11){calMonth=0;calYear++;} if(calMonth<0){calMonth=11;calYear--;} renderCalendar(); }
+function goToday(){ calYear=now.getFullYear(); calMonth=now.getMonth(); selectedDate=todayStr(); renderCalendar(); }
 
-// ── List view ──
+// ── List render ──
 function renderList(){
-  const td = todayStr();
-  const weekEnd = new Date(now); weekEnd.setDate(now.getDate()+7);
+  const td=todayStr();
+  const wEnd=new Date(now); wEnd.setDate(now.getDate()+7);
+  const mEnd=new Date(now.getFullYear(),now.getMonth()+1,0);
   let list=[...events];
   if(curFilter==='today') list=list.filter(e=>e.date===td);
-  else if(curFilter==='synced') list=list.filter(e=>e.src==='both');
-  else if(curFilter==='week') list=list.filter(e=>{const d=new Date(e.date+'T00:00');return d>=now&&d<=weekEnd;});
+  else if(curFilter==='week') list=list.filter(e=>{const d=new Date(e.date+'T00:00');return d>=now&&d<=wEnd;});
+  else if(curFilter==='month') list=list.filter(e=>{const d=new Date(e.date+'T00:00');return d>=now&&d<=mEnd;});
   document.getElementById('list-month-lbl').textContent=`${MONTHS[now.getMonth()]} ${now.getFullYear()}`;
   const el=document.getElementById('list-ev-list');
   if(!list.length){el.innerHTML='<div class="empty"><i class="ti ti-calendar-off"></i><p>Sin eventos</p></div>';return;}
   el.innerHTML=list.map((ev,i)=>`
-    <div class="ev" style="animation-delay:${i*40}ms">
-      <div class="ev-stripe" style="background:${stripeColor(ev.src)}"></div>
+    <div class="ev" style="animation-delay:${i*35}ms">
+      <div class="ev-stripe" style="background:var(--google)"></div>
       <div class="ev-body">
         <div class="ev-title">${esc(ev.title)}</div>
         <div class="ev-time">${fmtDate(ev.date,ev.time)}</div>
-        <div class="ev-tags">${tagHtml(ev.src)}</div>
       </div>
     </div>`).join('');
 }
 
-// ── Helpers ──
-function stripeColor(s){return s==='google'?'#34C759':s==='outlook'?'#0A84FF':'linear-gradient(180deg,#34C759 50%,#0A84FF 50%)';}
-function tagHtml(s){const g='<span class="tag tag-g">Google</span>',o='<span class="tag tag-o">Outlook</span>';return s==='both'?g+o:s==='google'?g:o;}
-function fmtDate(date,time){const[,m,d]=date.split('-');const ms=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];return `${parseInt(d)} ${ms[parseInt(m)-1]} · ${time}h`;}
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-
-// ── Stats ──
 function updateStats(){
+  const td=todayStr();
   document.getElementById('s-total').textContent=events.length;
-  document.getElementById('s-sync').textContent=events.filter(e=>e.src==='both').length;
-  document.getElementById('s-today').textContent=events.filter(e=>e.date===todayStr()).length;
+  document.getElementById('s-sync').textContent=events.filter(e=>e.date.startsWith(`${now.getFullYear()}-${pad(now.getMonth()+1)}`)).length;
+  document.getElementById('s-today').textContent=events.filter(e=>e.date===td).length;
 }
 
 function renderAll(){ updateStats(); renderCalendar(); renderList(); }
 
-// ── View switch ──
 function switchView(v,btn){
   curView=v;
   document.querySelectorAll('.nav-tab').forEach(b=>b.classList.remove('on'));
@@ -729,75 +709,40 @@ function switchView(v,btn){
   document.getElementById('view-calendar').classList.toggle('hidden',v!=='calendar');
   document.getElementById('view-list').classList.toggle('hidden',v!=='list');
 }
+function setFilter(f,btn){ curFilter=f; document.querySelectorAll('.chip').forEach(b=>b.classList.remove('on')); btn.classList.add('on'); renderList(); }
 
-// ── Filter ──
-function setFilter(f,btn){
-  curFilter=f;
-  document.querySelectorAll('.chip').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  renderList();
-}
-
-// ── New event sheet ──
 function openSheet(){
   const td=todayStr();
   document.getElementById('f-date').value=selectedDate||td;
-  document.getElementById('f-time').value=`${pad(now.getHours())}:00`;
+  document.getElementById('f-time').value=`${pad(now.getHours()+1)}:00`;
+  document.getElementById('f-time-end').value=`${pad(now.getHours()+2)}:00`;
   document.getElementById('f-title').value='';
   document.getElementById('f-desc').value='';
-  document.getElementById('chk-g').checked=true;
-  document.getElementById('chk-o').checked=true;
-  document.getElementById('opt-g').classList.add('sel');
-  document.getElementById('opt-o').classList.add('sel');
   document.getElementById('overlay').classList.add('open');
   setTimeout(()=>document.getElementById('f-title').focus(),350);
 }
-function closeSheet(){document.getElementById('overlay').classList.remove('open');}
-function bgCloseSheet(e){if(e.target===document.getElementById('overlay'))closeSheet();}
-function togOpt(id,cb){document.getElementById(id).classList.toggle('sel',cb.checked);}
+function closeSheet(){ document.getElementById('overlay').classList.remove('open'); }
+function togOpt(id,cb){ document.getElementById(id).classList.toggle('sel',cb.checked); }
+function openSettings(){ document.getElementById('settings-overlay').classList.add('open'); }
+function closeSettings(){ document.getElementById('settings-overlay').classList.remove('open'); }
+function bgClose(e,id){ if(e.target===document.getElementById(id)){ document.getElementById(id).classList.remove('open'); } }
 
-function saveEv(){
-  const title=document.getElementById('f-title').value.trim();
-  if(!title){document.getElementById('f-title').focus();return;}
-  const g=document.getElementById('chk-g').checked;
-  const o=document.getElementById('chk-o').checked;
-  if(!g&&!o){toast('Selecciona al menos un calendario');return;}
-  const src=g&&o?'both':g?'google':'outlook';
-  events.push({id:nextId++,title,date:document.getElementById('f-date').value||todayStr(),time:document.getElementById('f-time').value||'09:00',desc:document.getElementById('f-desc').value.trim(),src});
-  events.sort((a,b)=>a.date+a.time<b.date+b.time?-1:1);
-  saveEvents();
-  renderAll();
-  closeSheet();
-  toast(src==='both'?'Guardado en Google + Outlook':src==='google'?'Guardado en Google':'Guardado en Outlook');
+function logout(){
+  if(!confirm('¿Cerrar sesión?')) return;
+  localStorage.clear();
+  if(typeof google!=='undefined') google.accounts.oauth2.revoke(accessToken, ()=>{});
+  location.reload();
 }
 
-// ── Settings ──
-function openSettings(){document.getElementById('settings-overlay').classList.add('open');}
-function closeSettings(){document.getElementById('settings-overlay').classList.remove('open');}
-function bgCloseSettings(e){if(e.target===document.getElementById('settings-overlay'))closeSettings();}
-function clearEvents(){if(!confirm('¿Borrar todos los eventos?'))return;events=[];saveEvents();renderAll();closeSettings();toast('Eventos borrados');}
-function logout(){if(!confirm('¿Cerrar sesión y volver al inicio?'))return;localStorage.clear();location.reload();}
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function fmtDate(date,time){ const[,m,d]=date.split('-'); const ms=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic']; return `${parseInt(d)} ${ms[parseInt(m)-1]} · ${time}h`; }
 
-// ── Toast ──
 let toastTimer;
-function toast(msg){
-  const t=document.getElementById('toast');
-  document.getElementById('toast-txt').textContent=msg;
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
-}
+function toast(msg){ const t=document.getElementById('toast'); document.getElementById('toast-txt').textContent=msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),2800); }
 
-// ── Keyboard ──
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){closeSheet();closeSettings();closeAuthModal();}
-  if(e.key==='n'&&document.activeElement.tagName!=='INPUT') openSheet();
-});
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeSheet(); closeSettings(); } if(e.key==='n'&&document.activeElement.tagName!=='INPUT') openSheet(); });
 
-// ── Service Worker ──
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
-}
+if('serviceWorker' in navigator){ window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{})); }
 
 boot();
 </script>
